@@ -33,7 +33,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV /home/hp/Documents/AIML_Nov_Batch/venv
+set -gx VIRTUAL_ENV /home/hp/Documents/AIML/AIML_Nov_Batch/venv
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/"bin $PATH
