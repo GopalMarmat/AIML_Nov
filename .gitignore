@@ -1,0 +1,16 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# ML artifacts
+*.h5
+*.pt
+*.pkl
+*.joblib
+*.onnx
+
+# Data
+data/
+datasets/
