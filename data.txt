@@ -1,0 +1,599 @@
+
+
+# Salesforce Detailed Cheat Sheet
+
+## 1. What is Salesforce?
+
+**Salesforce** is a **cloud-based Customer Relationship Management (CRM) platform** used to manage:
+
+* Sales
+* Customer service
+* Marketing
+* Analytics
+* Application development
+
+It runs entirely on the cloud so users access it through a browser without installing software.
+
+**Key Benefits**
+
+* Cloud-based (SaaS)
+* Highly customizable
+* Scalable
+* Large ecosystem (AppExchange)
+
+---
+
+# 2. Salesforce Architecture
+
+### Multi-Tenant Architecture
+
+Salesforce uses **multi-tenancy**, meaning multiple customers share the same infrastructure.
+
+Example:
+
+* Like living in an apartment building
+* Everyone shares resources but data is secure.
+
+### Metadata Driven Architecture
+
+Salesforce apps are built using **metadata instead of code**.
+
+Examples of metadata:
+
+* Objects
+* Fields
+* Page Layouts
+* Workflows
+* Validation Rules
+
+Advantage:
+
+* Easy customization without programming.
+
+---
+
+# 3. Salesforce Environment Types
+
+### Production
+
+Live environment where actual business operations run.
+
+### Sandbox
+
+Testing environment copied from production.
+
+Types:
+
+* **Developer Sandbox** – Small, development testing
+* **Developer Pro Sandbox** – More storage
+* **Partial Copy Sandbox** – Sample production data
+* **Full Sandbox** – Complete copy of production
+
+---
+
+# 4. Salesforce Editions
+
+Different pricing levels with different features.
+
+Common Editions:
+
+* Essentials
+* Professional
+* Enterprise
+* Unlimited
+* Developer Edition
+
+Enterprise Edition is most commonly used in companies.
+
+---
+
+# 5. Salesforce Objects
+
+Objects are **database tables in Salesforce**.
+
+### Standard Objects
+
+Predefined by Salesforce.
+
+Examples:
+
+* Account
+* Contact
+* Lead
+* Opportunity
+* Case
+* Campaign
+
+### Custom Objects
+
+User-created objects.
+
+Example:
+
+* Student
+* Project
+* Order Tracking
+
+Naming convention:
+
+```
+Object_Name__c
+```
+
+Example:
+
+```
+Invoice__c
+```
+
+---
+
+# 6. Fields in Salesforce
+
+Fields store data in objects.
+
+Common field types:
+
+| Field Type    | Example                                 |
+| ------------- | --------------------------------------- |
+| Text          | Name                                    |
+| Number        | Quantity                                |
+| Email         | [user@email.com](mailto:user@email.com) |
+| Phone         | Phone number                            |
+| Picklist      | Status                                  |
+| Checkbox      | True/False                              |
+| Date          | Birthdate                               |
+| Formula       | Calculated field                        |
+| Lookup        | Relationship                            |
+| Master-Detail | Parent-child relationship               |
+
+Example:
+
+```
+Customer_Name__c
+```
+
+---
+
+# 7. Relationships in Salesforce
+
+Relationships connect objects.
+
+## Lookup Relationship
+
+Loose relationship.
+
+Example:
+
+* Contact → Account
+
+Characteristics:
+
+* Parent not required
+* Child record exists independently.
+
+---
+
+## Master-Detail Relationship
+
+Strong relationship.
+
+Example:
+
+* Order → Order Items
+
+Characteristics:
+
+* Child cannot exist without parent
+* Parent controls security
+* Supports Roll-Up Summary fields.
+
+---
+
+# 8. Record Types
+
+Record types allow **different business processes and page layouts for the same object**.
+
+Example:
+Opportunity object:
+
+* New Business
+* Existing Customer
+
+Each record type can have:
+
+* Different picklist values
+* Different page layouts.
+
+---
+
+# 9. Page Layout
+
+Controls **how fields appear in UI**.
+
+You can:
+
+* Show fields
+* Hide fields
+* Make fields read-only
+* Arrange sections
+
+---
+
+# 10. Profiles and Roles
+
+### Profiles
+
+Control **permissions**.
+
+Examples:
+
+* Object access
+* Field access
+* Login hours
+* App permissions
+
+Example profiles:
+
+* System Administrator
+* Standard User
+* Read Only
+
+---
+
+### Roles
+
+Control **record-level access (hierarchy)**.
+
+Example hierarchy:
+
+```
+CEO
+   |
+Sales Director
+   |
+Sales Manager
+   |
+Sales Rep
+```
+
+Managers can see subordinates' records.
+
+---
+
+# 11. Permission Sets
+
+Used to **extend user permissions without changing profile**.
+
+Example:
+User profile = Standard User
+Permission Set = "Export Reports"
+
+---
+
+# 12. Validation Rules
+
+Validation rules **prevent incorrect data entry**.
+
+Example rule:
+
+```
+Amount < 0
+```
+
+Error message:
+
+```
+Amount cannot be negative
+```
+
+---
+
+# 13. Workflow Rules
+
+Automate simple actions when criteria are met.
+
+Actions:
+
+* Email Alert
+* Field Update
+* Task Creation
+* Outbound Message
+
+Example:
+If Opportunity Amount > 1,00,000 → Send email to manager.
+
+---
+
+# 14. Process Builder
+
+More advanced automation tool than workflow.
+
+Capabilities:
+
+* Update records
+* Create records
+* Launch flows
+* Post to chatter
+
+Note: Mostly replaced by **Flow Builder** now.
+
+---
+
+# 15. Flow Builder
+
+Modern automation tool in Salesforce.
+
+Types:
+
+* Screen Flow
+* Record Triggered Flow
+* Scheduled Flow
+* Auto-launched Flow
+
+Example:
+When Opportunity closes → create invoice automatically.
+
+---
+
+# 16. Reports
+
+Reports are used to **analyze data**.
+
+Types:
+
+1. Tabular
+2. Summary
+3. Matrix
+4. Joined
+
+Example:
+Sales by Region report.
+
+---
+
+# 17. Dashboards
+
+Dashboards show **visual representation of reports**.
+
+Components:
+
+* Charts
+* Tables
+* Metrics
+* Gauges
+
+Example Dashboard:
+Sales Performance Dashboard.
+
+---
+
+# 18. SOQL (Salesforce Object Query Language)
+
+Used to query Salesforce data.
+
+Example:
+
+```
+SELECT Name, Industry 
+FROM Account
+WHERE Industry = 'IT'
+```
+
+Similar to SQL but used only for Salesforce objects.
+
+---
+
+# 19. SOSL (Salesforce Object Search Language)
+
+Used to search across multiple objects.
+
+Example:
+
+```
+FIND 'John'
+IN ALL FIELDS
+RETURNING Contact(Name), Account(Name)
+```
+
+---
+
+# 20. Apex
+
+Apex is Salesforce's **programming language**.
+
+Used for:
+
+* Custom logic
+* Triggers
+* Controllers
+
+Example:
+
+```apex
+Account acc = new Account(Name='Test');
+insert acc;
+```
+
+---
+
+# 21. Apex Trigger
+
+Triggers run automatically before or after database events.
+
+Events:
+
+* before insert
+* after insert
+* before update
+* after update
+* before delete
+* after delete
+
+Example:
+
+```
+Trigger AccountTrigger on Account(before insert)
+```
+
+---
+
+# 22. Visualforce
+
+Older UI framework used to create custom pages.
+
+Example:
+
+```
+<apex:page>
+Hello Salesforce
+</apex:page>
+```
+
+Now mostly replaced by **Lightning components**.
+
+---
+
+# 23. Lightning Framework
+
+Modern UI framework.
+
+Types:
+
+* Aura Components
+* Lightning Web Components (LWC)
+
+LWC is now preferred.
+
+---
+
+# 24. AppExchange
+
+Marketplace for Salesforce apps.
+
+Examples:
+
+* DocuSign
+* Conga
+* Mailchimp
+* Zoom integration
+
+Companies install ready-made apps instead of building everything.
+
+---
+
+# 25. Data Import Tools
+
+### Data Import Wizard
+
+Used for small imports.
+
+### Data Loader
+
+Used for large data operations.
+
+Supports:
+
+* Insert
+* Update
+* Upsert
+* Delete
+* Export
+
+---
+
+# 26. Governor Limits
+
+Salesforce limits resources to ensure fairness in multi-tenant architecture.
+
+Examples:
+
+* SOQL queries per transaction: 100
+* DML statements: 150
+* CPU time limit
+
+---
+
+# 27. Deployment Tools
+
+Moving changes between environments.
+
+Common tools:
+
+* Change Sets
+* Salesforce CLI
+* ANT Migration Tool
+* DevOps tools
+
+---
+
+# 28. Security Layers
+
+Salesforce security has multiple levels:
+
+1. Organization level
+2. Object level
+3. Field level
+4. Record level
+
+Example:
+User can access Account but cannot see Salary field.
+
+---
+
+# 29. Sharing Rules
+
+Used to **extend record access**.
+
+Example:
+Share Accounts owned by Sales team with Support team.
+
+Types:
+
+* Owner-based
+* Criteria-based
+
+---
+
+# 30. Salesforce Clouds
+
+Major Salesforce products:
+
+* Sales Cloud
+* Service Cloud
+* Marketing Cloud
+* Commerce Cloud
+* Experience Cloud
+* Data Cloud
+
+---
+
+# Quick Memory Map
+
+```
+Salesforce
+ ├ Objects
+ │   ├ Standard
+ │   └ Custom
+ ├ Fields
+ ├ Relationships
+ │   ├ Lookup
+ │   └ Master-Detail
+ ├ Security
+ │   ├ Profiles
+ │   ├ Roles
+ │   └ Permission Sets
+ ├ Automation
+ │   ├ Workflow
+ │   ├ Process Builder
+ │   └ Flow
+ ├ Development
+ │   ├ Apex
+ │   ├ Triggers
+ │   └ LWC
+ └ Data
+     ├ Reports
+     └ Dashboards
+```
+
+---
