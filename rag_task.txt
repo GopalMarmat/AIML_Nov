@@ -1,0 +1,18 @@
+RAG_Project
+│
+├── data.txt
+├── chroma_db/
+│
+├── load_documents.py
+├── chunk_documents.py
+├── create_embeddings.py
+├── vector_store.py
+├── retriever.py
+├── rag_pipeline.py
+│
+└── requirements.txt
+
+Instruction:
+1. Please follow above folder structure and complete RAG Project
+2. Used any open source LLM (Recommended Ollama and Model = phi3:mini)
+3. For data.txt used your own content any domain related like Finance, Health Care or Manufacturing
